@@ -1,15 +1,16 @@
 
 // fuzzBuzz by Paul K Lynch
 const fuzzBuzz = (start, end, ...prams) => {
-  let output = prams.map(pram => (start % pram.number === 0) ? pram.word : '');
-  let outputJoin = output.join('');
+  // reduce function to create line
+  const getLine = (line, pram) => line + ((start % pram.number === 0) ? pram.word : '')
 
-  console.log((outputJoin !== '') ? outputJoin : start);
+  // output line
+  console.log(prams.reduce(getLine, '') || start)
 
+  // repeat?
   start++;
-  if (start <= end) {
-    fuzzBuzz(start, end, ...prams);
-  }
+  if (start <= end) fuzzBuzz(start, end, ...prams)
 }
 
-fuzzBuzz(1, 30, {number: 3, word: 'Fuzz'}, {number: 5, word: 'Buzz'});
+// demo
+fuzzBuzz(1, 30, {number: 3, word: 'Fuzz'}, {number: 5, word: 'Buzz'})

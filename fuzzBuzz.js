@@ -1,5 +1,11 @@
 
-// fuzzBuzz by Paul K Lynch
+/**
+ * A version of the classic FuzzBuzz test.
+ * @author Paul K Lynch <dramatichamster@gmail.com>
+ * @param {number} start - Number to start on (or the current number).
+ * @param {number} end - The max number to count up to.
+ * @param {...Object} prams - Config of what numbers to replace and with what words.
+ */
 const fuzzBuzz = (start, end, ...prams) => {
   // reduce function to create line
   const getLine = (line, pram) => line + ((start % pram.number === 0) ? pram.word : '')

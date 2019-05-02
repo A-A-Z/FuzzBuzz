@@ -8,7 +8,7 @@
  */
 const fuzzBuzz = (start, end, ...prams) => {
   // reduce function to create line
-  const getLine = (line, pram) => line + ((start % pram.number === 0) ? pram.word : '')
+  const getLine = (line, { number, word }) => line + ((start % number === 0) ? word : '')
 
   // output line
   console.log(prams.reduce(getLine, '') || start)
